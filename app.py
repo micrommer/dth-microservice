@@ -1,6 +1,9 @@
-from flask import Flask
+from flask import Flask, jsonify
+from flask_cors import CORS
 import random
+
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/dth')
@@ -14,4 +17,5 @@ def hello_world():
     with open("temp.txt", "w") as file:
         file.write(f"${random.randrange(0,100)} , ${random.randrange(0,100)}")
     temp = temp.replace("$", "")
-    return temp
+    # temp = '{ "data " : +' + '"' + temp + '"' + '}'
+    return jsonify(temp)
