@@ -14,4 +14,5 @@ def hello_world():
             temp = line
             break
         print(temp)
+    temp = temp.replace("$","")
     return jsonify(temp)
